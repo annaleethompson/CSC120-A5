@@ -1,5 +1,5 @@
 public class Engine {
-    private String FuelType;
+    String FuelType;
     double max_fuel;
     double current_fuel;
 
@@ -14,7 +14,7 @@ public class Engine {
         if (this.max_fuel == this.current_fuel) { 
             throw new RuntimeException("Engine is already at maximum fuel: " + this.max_fuel);
         }
-        this.current_fuel = 10;
+        this.current_fuel = 100;
         System.out.println("Engine was successfully refueled! Engine now at fuel level: " + this.current_fuel);
     }
     

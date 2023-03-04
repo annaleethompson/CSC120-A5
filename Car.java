@@ -1,7 +1,4 @@
 import java.util.ArrayList;
-import javax.management.RuntimeErrorException;
-
-
 
 
 public class Car {
@@ -32,7 +29,7 @@ public class Car {
             throw new RuntimeException("Sorry! This car is at maximum capacity.");
         }
         
-        this.riders.add();
+        this.riders.add(p);
         this.current_capacity +=1;
         System.out.println(p.name + " was successfully added to the car.");
     }
@@ -50,9 +47,9 @@ public class Car {
     } 
     
     public void printManifest() {
-        for (int i=0; i < riders.size(); i++) {
+        //for (int i=0; i < riders.size(); i++) {
         //System.out.println(riders.toString(riders.name));
-            System.out.println((i.toString()))
+            //System.out.println((i.toString()))
         
         
         }
