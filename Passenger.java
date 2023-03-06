@@ -18,8 +18,12 @@ public class Passenger {
         try {
             c.removePassenger(this);
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e);//Print message of e
         }
+    }
+
+    public String getName() {
+        return this.name;
     }
     public static void main(String[] args) {
         Car myCar = new Car(100, 0);

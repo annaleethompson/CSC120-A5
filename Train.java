@@ -4,35 +4,58 @@ public class Train {
 
     FuelType fuelType;
     double fuelCapacity;
-    private final Engine engine = new Engine(fuelType, fuelCapacity)
-    this.engine = new Engine(fuelType, fuelCapacity); 
-    ArrayList<Car> nCars;
+    private final Engine engine;
+    int nCars;
+    int passengerCapacity;
+    //this.engine = new Engine(fuelType, fuelCapacity); 
+    ArrayList<Car> cars_attached;
+    int seatsRemaining = 0;
+    //int nCars;
     //String fuelType = engine.FuelType;
 
     public Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity) {
-        this.nCars = new ArrayList<Car>();
+        this.cars_attached = new ArrayList<Car>();
+        this.engine = new Engine(fuelType, fuelCapacity);
+        //for (int i=0, i>nCars, i++) {
+            //cars_attached.add(Car(passengerCapacity));
         
         
     }
 
     public Engine getEngine() {
-        
+        return this.engine;
     }
 
     public Car getCar(int i) {
-
+        return this.cars_attached.get(i);
     }
 
     public int getMaxCapacity() {
-
+        return this.passengerCapacity;
     }
 
     public int seatsRemaining() {
-        
+        for (int i=0; i < cars_attached.size(); i++){
+            seatsRemaining += cars_attached.get(i).getCurrentCapacity();
+        }
+        return seatsRemaining;
     }
 
-    public void printManifest() {
+    public void printManifest2() {
+        if (cars_attached.size() == 0){
+            throw new RuntimeException("This train is empty.");
+        }
+        for (int i=0; i < cars_attached.size(); i++) {
+            cars_attached.get(i).printManifest();
+        }  
+    }
 
+    public static void main(String[] args) {
+        Train myTrain = new Train(FuelType.ELECTRIC, 100, 2, 300);
+        //Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0);
+        //Car myCar = new Car(100, 0);
+        //Car notmyCar = new Car(200, 0);
+        System.out.print(myTrain.getEngine());
     }
 
 }

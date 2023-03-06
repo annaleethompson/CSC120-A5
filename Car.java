@@ -5,7 +5,6 @@ public class Car {
     private ArrayList<Passenger> riders;
     int max_capacity;
     int current_capacity = 0;
- 
     
 
     public Car( int max_capacity, int current_capacity) {
@@ -36,7 +35,7 @@ public class Car {
 
     public void removePassenger(Passenger p) {
         if (!this.riders.contains(p)) {
-            throw new RuntimeException("Sorry! This passeenger is not on this car.");
+            throw new RuntimeException("Sorry! This passenger is not on this car.");
         }
         if (current_capacity == 0) {
             throw new RuntimeException("Sorry! There are no passengers in this car.");
@@ -47,13 +46,17 @@ public class Car {
     } 
     
     public void printManifest() {
-        //for (int i=0; i < riders.size(); i++) {
-        //System.out.println(riders.toString(riders.name));
-            //System.out.println((i.toString()))
-        
-        
+        if (riders.size() ==0){
+            throw new RuntimeException("This car is empty.");
         }
-    
+        for (int i=0; i < riders.size(); i++) {
+            System.out.println(riders.get(i).getName());
+        }
+    }
+
+    public int getCurrentCapacity() {
+        return this.current_capacity;
+    }
 
     
     public static void main(String[] args) {

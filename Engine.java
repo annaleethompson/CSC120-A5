@@ -1,10 +1,10 @@
 public class Engine {
-    String FuelType;
+    FuelType fuelType;
     double max_fuel;
     double current_fuel;
 
-    public Engine(String FuelType,  double current_fuel) {
-        this.FuelType = FuelType;
+    public Engine(FuelType FuelType,  double current_fuel) {
+        this.fuelType = FuelType;
         this.max_fuel = 100;
         this.current_fuel = current_fuel;
 
@@ -25,9 +25,12 @@ public class Engine {
         this.current_fuel -= 10;
         System.out.println("Trip was succesful! Remaining fuel level: " +this.current_fuel);
     }
+    
+
+
 
     public static void main(String[] args) {
-        Engine myEngine = new Engine("ELECTRIC", 100.0);
+        Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0);
         try {
             while (true) {
                 myEngine.go();
