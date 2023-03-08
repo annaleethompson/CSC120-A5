@@ -1,25 +1,42 @@
+/** 
+ * Filename: Car.java
+ * Decription: Car class with attributes max capacity, current capacity, and an array list containing all passengers. Contains functions getMaxCapacityCar(), seatsRemaining(), addPassenger(), removePassenger(), printManifest(), and getCurrentCapacity.
+ * A part of CSC 120-02: Object-Oriented Programming, Smith College Spring 2023, A5: Bringing it All Together
+ * @author Anna-Lee Thompson (@annaleethompson)
+ * Date: March 7, 2023
+ */
+
+ /**Imports ArrayList from the java.util package */
 import java.util.ArrayList;
 
-
+/**Creates Car Class */
 public class Car {
+
+    /**Store Car ArrayList of passengers, max capacity, and current capacity */
     private ArrayList<Passenger> riders;
     int max_capacity;
     int current_capacity = 0;
     
-
-    public Car( int max_capacity, int current_capacity) {
-        this.current_capacity = current_capacity;
+    /**Constructor */
+    public Car( int max_capacity) {
         this.riders = new ArrayList<Passenger>();
         this.max_capacity = max_capacity;
     }
 
-    public int getCapacity() {
+    /**Accesor ("getter") for the max capacity of a car*/
+    public int getMaxCapacityCar() {
         return this.max_capacity;
     }
 
+    /**Accessor ("getter") for the numer of seats available in a car*/
     public int seatsRemaining() {
         return this.max_capacity-this.current_capacity;
     }
+
+    /**
+     * Adds a passenger to a car and throws a RunTimeException if the passenger is on the car already or if the car is at maximum capacity.
+     * @param p the passenger to be added
+     */
     public void addPassenger(Passenger p) {
         if (this.riders.contains(p)) { // Already enrolled
             throw new RuntimeException(p.name + " is already on this car.");
@@ -33,6 +50,10 @@ public class Car {
         System.out.println(p.name + " was successfully added to the car.");
     }
 
+    /**
+     * Removes a passenger from a car and throws a RunTimeException if the passenger isn't in the car or if there are no passengers on the car.
+     * @param p the passenger to be removed
+     */
     public void removePassenger(Passenger p) {
         if (!this.riders.contains(p)) {
             throw new RuntimeException("Sorry! This passenger is not on this car.");
@@ -45,7 +66,9 @@ public class Car {
         System.out.println(p.name + " was successfully removed from the car.");
     } 
     
+    /**Prints out a list of all the passengers in a car */
     public void printManifest() {
+        System.out.println("Passengers:");
         if (riders.size() ==0){
             throw new RuntimeException("This car is empty.");
         }
@@ -54,13 +77,14 @@ public class Car {
         }
     }
 
+    /**Accessor ("getter") for the current capacity of a car */
     public int getCurrentCapacity() {
         return this.current_capacity;
     }
 
     
     public static void main(String[] args) {
-        Car myCar = new Car(100, 0);
+        Car myCar = new Car(100);
         Passenger p = new Passenger("Egg");
         //System.out.print(myCar.getCapacity());
         //System.out.println("\n");
@@ -69,9 +93,9 @@ public class Car {
         myCar.addPassenger(p);
         //myCar.addPassenger(p);
         //System.out.println("\n");
-        //System.out.print(myCar.seatsRemaining());
+        System.out.print(myCar.seatsRemaining());
         //System.out.println("\n");
-        //myCar.removePassenger(p);
+        myCar.removePassenger(p);
         //System.out.println("\n");
         //System.out.print(myCar.seatsRemaining());
         Passenger s = new Passenger("Eggy");
@@ -81,12 +105,3 @@ public class Car {
 
     }   
 }
-
-//## Step 2: the `Car` class
-//Next, we'll set to work on the `Car` class. The `Car` class will need:
-
- //- a private `ArrayList` where it will store the `Passenger`s currently onboard, and an `int` for the `Car`'s maximum capacity (since `ArrayList`s will expand as we add objects, we'll need to manually limit their size)
- // -   - a constructor, which takes in an initial value for the `Car`'s maximum capacity and initializes an appropriately-sized `ArrayList`
- //- accessor-like methods `public int getCapacity()` and `public int seatsRemaining()` that return the maximum capacity and remaining seats, respectively
- //- methods `public void addPassenger(Passenger p)` and `public void removePassenger(Passenger p)` to add or remove a `Passenger` from the `Car` (_Hint: don't forget to check that there are seats available if someone wants to board, and to confirm that the `Passenger` is actually onboard before trying to remove them! If you encounter a problem, throw a `RuntimeException`._)
- //- and a final method `public void printManifest()` that prints out a list of all `Passenger`s aboard the car (or "This car is EMPTY." if there is no one on board)
